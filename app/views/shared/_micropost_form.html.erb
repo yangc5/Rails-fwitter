@@ -4,7 +4,7 @@
     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
   </div>
   <div>
-  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :title)%>
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :title, include_blank: true)%>
   </div>
 
   <%= f.label "New Category"%>
