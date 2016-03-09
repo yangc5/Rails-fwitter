@@ -15,4 +15,8 @@ class Micropost < ActiveRecord::Base
       end
     end
   end
+
+  def self.top_feeds
+    all.joins(:categories).group("microposts.id").order("count(categories.id) DESC").limit(10)
+  end
 end
