@@ -235,3 +235,22 @@ span.picture {
     border: 0;
   }
 }
+
+#categories {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  label {
+      display: inline-block;
+      vertical-align: baseline;
+      width: 90%;
+  }
+
+  input {
+      width: 10%;
+      display: inline-block;
+      vertical-align: baseline;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+  }
+}

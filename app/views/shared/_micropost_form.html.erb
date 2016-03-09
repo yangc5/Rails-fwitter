@@ -3,7 +3,7 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
   </div>
-  <div>
+  <div id='categories'>
   <%= f.collection_check_boxes(:category_ids, Category.all, :id, :title, include_blank: true)%>
   </div>
 
