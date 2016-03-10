@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if auth['uid']
+    if auth
       user = User.find_by(email: auth[:info][:email])
       if user.nil?
         user = User.create(name: auth[:info][:name], email: auth[:info][:email], password: "password")
