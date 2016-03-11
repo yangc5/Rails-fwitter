@@ -17,6 +17,6 @@ class Micropost < ActiveRecord::Base
   end
 
   def self.top_feeds
-    all.joins(:categories).group("microposts.id").order("count(categories.id) DESC").limit(10)
+    order(likes: :desc).limit(5)
   end
 end

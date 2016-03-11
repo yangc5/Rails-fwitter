@@ -19,6 +19,15 @@ class MicropostsController < ApplicationController
     redirect_to root_url
   end
 
+  def like
+    @micropost = Micropost.find_by(id: params[:id])
+    unless @micropost.nil?
+      @micropost.likes+=1
+      @micropost.save
+    end
+    redirect_to root_url
+  end
+
   private
     def micropost_params
       params.require(:micropost).permit(:content, category_ids:[], categories_attributes: [:title])
