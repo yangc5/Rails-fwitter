@@ -17,6 +17,6 @@ class Micropost < ActiveRecord::Base
   end
 
   def self.top_feeds
-    order(likes: :desc).limit(5)
+    self.reorder('likes DESC').limit(5)
   end
 end
