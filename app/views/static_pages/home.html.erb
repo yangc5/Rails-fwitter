@@ -28,3 +28,32 @@
   <%= link_to("login with facebook!", "/auth/facebook") %>
 </div>
 <% end %>
+
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('form').submit(function(event){
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var posting = $.post('/microposts', values);
+
+      posting.done(function(data){
+
+        var newPost = '<li id="micropost-'+data['micropost']['id']+'">';
+        newPost += '<span class="user">'+data['micropost']['user']['name']+'</span>';
+        newPost += '<span class="content">'+data['micropost']['content']+'</span>';
+        newPost += '<span class="timestamp"> Posted at '+data['micropost']['created_at']+'</span>';
+        newPost += '</li>'
+
+        $('.microposts').prepend(newPost);
+        console.log(data);
+      });
+
+
+
+    });
+  });
+</script>
