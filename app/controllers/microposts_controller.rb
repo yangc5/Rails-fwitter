@@ -13,9 +13,9 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @id =@micropost.id
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
-    redirect_to root_url
+    render json: {success: @id}, status: 200
   end
 
   def like
@@ -23,8 +23,8 @@ class MicropostsController < ApplicationController
     unless @micropost.nil?
       @micropost.likes+=1
       @micropost.save
+      render json: {likes: @micropost.likes}, status: 200
     end
-    redirect_to root_url
   end
 
   private
