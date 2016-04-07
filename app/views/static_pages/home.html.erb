@@ -19,9 +19,7 @@
   <h1>Welcome to Rails Fwitter</h1>
 
   <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
+    This is the home page for the Rails Twitter Clone sample application.
   </h2>
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
@@ -72,30 +70,6 @@
         //leave this here for debugging
         console.log(data);
       });
-    });
-
-    $('.microposts').on('click', '.like', function(event){
-      event.preventDefault();
-      var post_id = $(this).parent().attr('id').split('-')[1];
-      var that = this;
-      $.post('/like/'+post_id, function(data){
-          $(that).parent().find('.likes_count').text('Has '+data['likes']+' likes.');
-      });
-    });
-
-    $('.microposts').on('click', '.delete' ,function(event){
-        event.preventDefault();
-        var post_id = $(this).parent().attr('id').split('-')[1];
-        var that = this;
-        var request = $.ajax({
-          url: '/microposts/'+post_id,
-          type: 'DELETE',
-          success: function(data){
-            if(data['success'] == post_id){
-              $(that).parent().remove();
-            }
-          }
-        });
     });
 
   });

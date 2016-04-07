@@ -26,6 +26,7 @@ users = User.order(:created_at).take(6)
   users.each do |user|
     post = user.microposts.create!(content: content)
     post.categories << categories.sample
-    post.categories << categories.sample
+    post.likes=rand(1000)
+    post.save
   end
 end
