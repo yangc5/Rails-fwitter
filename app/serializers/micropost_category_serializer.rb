@@ -1,3 +1,3 @@
 class MicropostCategorySerializer < ActiveModel::Serializer
-  attributes :title
+  attributes :title, :id
 end

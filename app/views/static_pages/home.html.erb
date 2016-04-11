@@ -67,6 +67,19 @@
         $('.microposts').prepend(newPost);
         $('form').trigger("reset");
 
+        var categories = $('#categories').find('label').map(function(){
+          return $.trim($(this).text());
+        }).get();
+
+        data['micropost']['categories'].forEach(function(category){
+          if(categories.indexOf(category['title']) === -1) {
+            console.log(category['id'], category['title']);
+            $('#categories').append(
+              '<input type="checkbox" value="'+category['id']+'" name="micropost[category_ids][]" id="micropost_category_ids_'+category['id']+'"><label for="micropost_category_ids_'+category['id']+'">'+category['title']+'</label>'
+            );
+          }
+        });
+
         //leave this here for debugging
         console.log(data);
       });
