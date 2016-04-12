@@ -20,31 +20,3 @@
     </div>
   </body>
 </html>
-
-<script>
-$(function(){
-  $('.microposts').on('click', '.like', function(event){
-    event.preventDefault();
-    var post_id = $(this).parent().attr('id').split('-')[1];
-    var that = this;
-    $.post('/like/'+post_id, function(data){
-        $(that).parent().find('.likes_count').text('Has '+data['likes']+' likes.');
-    });
-  });
-
-  $('.microposts').on('click', '.delete' ,function(event){
-      event.preventDefault();
-      var post_id = $(this).parent().attr('id').split('-')[1];
-      var that = this;
-      var request = $.ajax({
-        url: '/microposts/'+post_id,
-        type: 'DELETE',
-        success: function(data){
-          if(data['success'] == post_id){
-            $(that).parent().remove();
-          }
-        }
-      });
-  });
-});
-</script>
